@@ -45,6 +45,8 @@ shinyUI(navbarPage("Alcohol-Related Hospital Admissions",
 			 	   	p("Colours indicate which quintile the area falls 
 			 	   	   into, red indicates the highest (i.e worst), dark green indicates the 
 			 	   	   lowest (best).", 
+			 	   	  style = "font-family: 'baskerville'; font-si16pt"),
+			 	   	p("Note: the map may take a few seconds to load.", 
 			 	   	  style = "font-family: 'baskerville'; font-si16pt")
 			 	   	),
 			 	   mainPanel(

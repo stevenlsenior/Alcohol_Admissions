@@ -88,7 +88,7 @@ shinyUI(navbarPage("Alcohol-Related Hospital Admissions",
 			  to live.", 
 			 	   	  style = "font-family: 'baskerville'; font-si16pt"),
 			 	   	
-			 	   	a(href = "https://github.com/stevenlsenior/Data_Products",
+			 	   	a(href = "https://github.com/stevenlsenior/Alcohol_Admissions",
 			 	   	  "Link to source code on GitHub")
 			 	   	
 			 	   ))

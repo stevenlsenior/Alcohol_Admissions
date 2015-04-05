@@ -1,0 +1,17 @@
+{
+    "contents" : "# load required packages\nlibrary(maptools); library(classInt); library(RColorBrewer)\n\n# load admissions data and map file\ndata <- read.csv(\"alcohol_related_admissions.csv\", stringsAsFactors = FALSE)\nmap <- readShapePoly(\"England_lad_2011_gen_clipped\")\n\n# convert name and ONS codes to character for easier matching\nmap$CODE <- as.character(map$CODE)\nmap$NAME <- as.character(map$NAME)\n\n# create variables for admissions data in map file\nmap$ALL <- numeric(length(map$CODE))\nmap$MALE <- numeric(length(map$CODE))\nmap$FEMALE <- numeric(length(map$CODE))\n\n# loop over LA entries in mapfile, match to data by name (some mismatches by ONS code)\nfor(i in 1:length(map$CODE)){\n\tmap$ALL[i] <- data$admissions_per_100000[data$ons_code == map$CODE[i]]\n\tmap$FEMALE[i] <- data$admissions_per_100000_females[data$ons_code == map$CODE[i]]\n\tmap$MALE[i] <- data$admissions_per_100000_males[data$ons_code == map$CODE[i]]\n}\n\n# set vector of colours for plotting\nbreaks <- classIntervals(map$ALL, n = 5, style = \"quantile\")\ncols <- rev(brewer.pal(5, \"RdYlGn\"))\nplot(map, col = cols[findInterval(map$ALL, breaks$brks)])\n",
+    "created" : 1428072992484.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2982411700",
+    "id" : "655B4D09",
+    "lastKnownWriteTime" : 1428156895,
+    "path" : "~/Documents/R Projects/Alcohol_admissions/Alcohol_admissions_map.R",
+    "project_path" : "Alcohol_admissions_map.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
